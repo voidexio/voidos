@@ -1,11 +1,14 @@
 import Database from 'better-sqlite3';
 import { mkdirSync } from 'node:fs';
-import { dirname } from 'node:path';
+import { dirname, join } from 'node:path';
 
 export type Db = Database.Database;
 
-/** Default database file. Override with the VOIDOS_DB env var. */
-export const DEFAULT_DB_PATH = process.env['VOIDOS_DB'] ?? 'data/voidos.db';
+/**
+ * Default database file: <project>/data/voidos.db, wherever the process was started from
+ * (Claude launches the MCP server from an arbitrary cwd). Override with the VOIDOS_DB env var.
+ */
+export const DEFAULT_DB_PATH = process.env['VOIDOS_DB'] ?? join(import.meta.dirname, '..', 'data', 'voidos.db');
 
 const SCHEMA = `
 CREATE TABLE IF NOT EXISTS projects (
