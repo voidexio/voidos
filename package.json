@@ -9,11 +9,15 @@
   "scripts": {
     "test": "node --test \"src/**/*.test.ts\"",
     "typecheck": "tsc --noEmit",
-    "mcp": "node src/mcp/main.ts"
+    "mcp": "node src/mcp/main.ts",
+    "api": "node src/api/main.ts",
+    "dev": "node --watch src/api/main.ts"
   },
   "dependencies": {
+    "@hono/node-server": "^2.1.11",
     "@modelcontextprotocol/sdk": "^1.32.2",
     "better-sqlite3": "^13.2.0",
+    "hono": "^4.13.20",
     "zod": "^4.6.7"
   },
   "devDependencies": {
